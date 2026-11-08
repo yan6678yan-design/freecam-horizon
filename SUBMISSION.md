@@ -9,13 +9,13 @@ separate step; this project does not claim to be listed or officially endorsed.
 | Type | Native mod |
 | ID | `freecam_yannis` |
 | Name | FreeCam |
-| Version | `1.0.0` |
+| Version | `1.0.1` |
 | Minecraft version | `26.3` |
 | Author | `Yannis_` |
 | License | `MIT` |
 | Source | `https://github.com/yan6678yan-design/freecam-horizon` |
 | Issues | `https://github.com/yan6678yan-design/freecam-horizon/issues` |
-| File | `freecam_yannis-1.0.0.hnmod` from this repository's release |
+| File | `freecam_yannis-1.0.1.hnmod` from this repository's release |
 | Icon | `assets/icon.png` — square PNG, 256 × 256, under 256 KiB |
 | Summary | Free camera, F6 follow view and nine tripod positions for Horizon. |
 
@@ -52,6 +52,9 @@ Not an official Minecraft product. Not approved by or associated with Mojang,
 Microsoft, MinecraftFreecam or the Horizon project.
 
 ## Release notes
+
+1.0.1: Hide the crosshair in F6 follow mode and restore the normal HUD on exit.
+Other HUD layers and other mods' cancellation flags are left intact.
 
 Initial Horizon Rust port: F4 free flight, F6 follow view with return-to-camera,
 nine session tripod slots, persistent speed/distance/height settings and native

@@ -1,7 +1,7 @@
 // FreeCam by Yannis_: native camera state and geometry. No game objects retained.
 use std::cell::RefCell;
 pub const ID: &str = "freecam_yannis";
-pub const VERSION: &str = "1.0.0";
+pub const VERSION: &str = "1.0.1";
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct Pose {
     pub position: [f64; 3],

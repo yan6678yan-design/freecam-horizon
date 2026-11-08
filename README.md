@@ -23,7 +23,7 @@ high, wide **F6 follow camera** while continuing to move and play normally.
   and sprint boost. Movement and block interactions are suppressed while you
   control the free camera; your player's normal physics continue.
 - **Follow view:** a smooth offset behind and above your player. Player controls
-  remain active. Default distance **28 blocks**, height **18 blocks**.
+  remain active; the crosshair is hidden while following and returns on exit. Default distance **28 blocks**, height **18 blocks**.
 - **Return where you left off:** F6 restores your previous free camera, or returns
   to the player if you entered follow view directly.
 - **Nine tripods:** save and revisit camera positions for the current world.
@@ -53,7 +53,7 @@ rebinding free camera changes that modifier too. Tripod positions are session-on
 
 ## Install
 
-Download **`freecam_yannis-1.0.0.hnmod`** from
+Download **`freecam_yannis-1.0.1.hnmod`** from
 [Releases](https://github.com/yan6678yan-design/freecam-horizon/releases).
 This is a **Horizon native source bundle**, not a Fabric JAR. The Horizon launcher
 compiles it into the game. It does not require Fabric, Sodium or Java.

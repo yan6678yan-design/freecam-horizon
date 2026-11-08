@@ -13,5 +13,5 @@ git -C "$tools" checkout --detach "$revision"
 python3 "$tools/native/tools/native.py" "${1:-check}" "$root" "${@:2}"
 if [ "${1:-check}" = package ]; then
   mkdir -p "$root/dist"
-  cp "$tools/native/target/freecam_yannis-1.0.0.hnmod" "$root/dist/"
+  cp "$tools/native/target/freecam_yannis-1.0.1.hnmod" "$root/dist/"
 fi

@@ -1,6 +1,6 @@
 [mod]
 id = "freecam_yannis"
-version = "1.0.0"
+version = "1.0.1"
 priority = 100
 
 # Two internal camera/input hooks require this exact tested Nightly.
@@ -159,4 +159,15 @@ bindings = [
   { name = "game", ty = "&mut crate::game::Game<'_>", value = "&mut *self" },
   { name = "mod_id", ty = "&str", value = "mod_id" },
   { name = "button", ty = "usize", value = "button" },
+]
+
+[[injection]]
+id = "gui_layer_pre"
+kind = "HEAD"
+target = "horizon_client::game::native_hooks::Game<'_>::native_gui_layer_pre"
+helper = "gui_layer_pre.rs"
+bindings = [
+  { name = "game", ty = "&crate::game::Game<'_>", value = "&*self" },
+  { name = "layer", ty = "&str", value = "layer" },
+  { name = "canceled", ty = "&mut bool", value = "&mut *canceled" },
 ]

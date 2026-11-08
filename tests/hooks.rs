@@ -234,3 +234,40 @@ fn settings_and_render_hooks_respect_mod_state() {
     assert!(!hidden);
     assert!(freecam_body(&g).is_continue());
 }
+
+include!(concat!(
+    env!("CARGO_MANIFEST_DIR"),
+    "/mixins/freecam_yannis/gui_layer_pre.rs"
+));
+
+#[test]
+fn crosshair_is_hidden_only_during_follow_and_other_cancellations_survive() {
+    let mut g = game::Game::default();
+    let hidden = |g: &game::Game<'_>, layer: &str| {
+        let mut canceled = false;
+        freecam_gui_layer_pre(g, layer, &mut canceled);
+        canceled
+    };
+    assert!(!hidden(&g, "minecraft:crosshair"));
+    freecam_key(&mut g, "key.keyboard.f6", true);
+    assert!(hidden(&g, "minecraft:crosshair"));
+    assert!(!hidden(&g, "minecraft:hotbar"));
+    g.on = false;
+    assert!(!hidden(&g, "minecraft:crosshair"));
+    g.on = true;
+    let player = g.player.take();
+    assert!(!hidden(&g, "minecraft:crosshair"));
+    g.player = player;
+    freecam_key(&mut g, "key.keyboard.f6", true);
+    assert!(!hidden(&g, "minecraft:crosshair"));
+    freecam_key(&mut g, "key.keyboard.f4", true);
+    freecam_key(&mut g, "key.keyboard.f4", false);
+    assert!(!hidden(&g, "minecraft:crosshair"));
+    freecam_key(&mut g, "key.keyboard.f6", true);
+    assert!(hidden(&g, "minecraft:crosshair"));
+    freecam_key(&mut g, "key.keyboard.f6", true);
+    assert!(!hidden(&g, "minecraft:crosshair"));
+    let mut canceled = true;
+    freecam_gui_layer_pre(&g, "minecraft:crosshair", &mut canceled);
+    assert!(canceled);
+}

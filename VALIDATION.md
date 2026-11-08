@@ -9,10 +9,14 @@
 - horizon-mods build tool: `32abdd651c045ca2a6aab40c4560152507c07d67`.
 - horizon-mixins: `e8cd0aa38cffef49cb2e088ef716baa107148c02`.
 
-## Passed
+## Passed — 1.0.1
 
-- `cargo test`: eight camera/settings tests and four adapter scenarios.
-  The eight core tests also run in the adapter binary: 20 executions, 12 distinct tests.
+- Crosshair cancellation is restricted to F6 follow mode. Tests cover exit to
+  player/free camera, disabled mod, missing player, other HUD layers, and preserving
+  another mod's cancellation.
+
+- `cargo test`: eight camera/settings tests and five adapter scenarios.
+  The eight core tests also run in the adapter binary: 21 executions, 13 distinct tests.
 - 1,000 F6 round trips preserve the previous free camera, both at core level and
   through the actual injected keyboard helpers.
 - Free mode intercepts look, movement and interactions; follow mode leaves normal
@@ -20,7 +24,7 @@
 - Menu/server guards, disconnect/unload resets, tripod chords, invalid settings,
   frame-time bounds, normalized diagonal movement and follow geometry.
 - `cargo fmt --check`.
-- Official `native.py check` applies all 14 injections and compiles the full
+- Official `native.py check` applies all 15 injections and compiles the full
   Horizon client with `RUSTFLAGS=-D warnings` on the pinned Nightly.
 
 The adapter tests execute the delivered helper files against a minimal host;
@@ -29,7 +33,7 @@ actual Horizon source. Neither substitutes for rendering a live world.
 
 - Official `cargo-horizon-mod check`: native bundle accepted; unsigned as documented.
 - Packaged Rust/TOML sources and license match the repository byte for byte.
-- Bundle SHA-256: `eec3d8892f45a417364d25e7183d1f51e59576adf58f1d74909c08ef575164c9`.
+- Bundle SHA-256: `97b727405c8aeef6d7865701fc7fda4f52fe61549a47125e6b6244c7872e161c`.
 
 ## Remaining manual checks
 
