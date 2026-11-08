@@ -1,0 +1,25 @@
+name: Check native mod
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt
+      - run: cargo fmt --check
+      - run: cargo test --locked
+      - run: ./scripts/native.sh check
+        env:
+          CARGO_BUILD_JOBS: 3
+      - run: ./scripts/native.sh package
+      - uses: actions/upload-artifact@v4
+        with:
+          name: freecam-horizon
+          path: dist/*.hnmod
